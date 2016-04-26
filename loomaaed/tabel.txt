@@ -1,0 +1,59 @@
+CREATE TABLE IF NOT EXISTS `asasko_loomaaed` (
+  `id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `nimi` varchar(255) NOT NULL,
+  `vanus`int(3) NOT NULL,
+  `liik` varchar(255) NOT NULL,
+  `puur` int(11) NOT NULL
+
+);
+
+$sql = "CREATE TABLE IF NOT EXISTS `asasko_loomaaed` (\n"
+    . " `id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,\n"
+    . " `nimi` varchar(255) NOT NULL,\n"
+    . " `vanus`int(3) NOT NULL,\n"
+    . " `liik` varchar(255) NOT NULL,\n"
+    . " `puur` int(11) NOT NULL\n"
+    . "\n"
+    . ")";
+
+INSERT INTO `asasko_loomaaed` (`id`, `nimi`, `vanus`, `liik`,`puur`) VALUES
+(1, 'Juss', 1, 'British Shorthair', '1' ),
+(2, 'Krants', 3, 'American fuzzy lop', '2'),
+(3, 'Pall', 5, 'English Angora', '2'),
+(4, 'Äike', 3, 'British Shorthair', '3'),
+(5, 'Rad', 10, 'Ragdoll', '4');
+
+
+$sql = "INSERT INTO `asasko_loomaaed` (`id`, `nimi`, `vanus`, `liik`,`puur`) VALUES\n"
+    . "(1, \'Juss\', 1, \'British Shorthair\', \'1\' ),\n"
+    . "(2, \'Krants\', 3, \'American fuzzy lop\', \'2\'),\n"
+    . "(3, \'Pall\', 5, \'English Angora\', \'2\'),\n"
+    . "(4, \'Äike\', 3, \'British Shorthair\', \'3\'),\n"
+    . "(5, \'Rad\', 10, \'Ragdoll\', \'4\')";
+
+1.
+SELECT *
+FROM `asasko_loomaaed`
+WHERE `Puur` = '2'
+LIMIT 0 , 30
+
+2.
+SELECT MIN( Vanus ) , MAX( Vanus )
+FROM `asasko_loomaaed` 
+
+3.
+SELECT `Puur` , COUNT( * )
+FROM `asasko_loomaaed`
+GROUP BY `Puur`
+LIMIT 0 , 30
+
+4.
+update `asasko_loomaaed` set `Vanus`=`Vanus`+1
+$sql = "update `asasko_loomaaed` set `Vanus`=`Vanus`+1";
+
+5.
+SELECT * , MIN( `Vanus` ) , MAX( `Vanus` ) , `Puur` , COUNT( * )
+FROM `asasko_loomaaed`
+WHERE `Puur` = '2'
+GROUP BY `Puur`
+LIMIT 0 , 30
